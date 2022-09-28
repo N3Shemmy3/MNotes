@@ -1,9 +1,18 @@
 <template>
-  <v-container fluid>
-    <v-list bg-color="background" :items="content" item-props lines="three">
-      <template v-slot:subtitle="{ subtitle }">
-        <div v-html="subtitle"></div>
-      </template>
+  <v-container>
+    <v-list bg-color="background" lines="three">
+      <v-list-item
+        @click="$router.push('/about')"
+        v-for="item in content"
+        :key="item.title"
+        :prepend-avatar="item.prependAvatar"
+        :title="item.title"
+        :subtitle="item.subtitle"
+      >
+        <template v-slot:subtitle="{ subtitle }">
+          <div v-html="subtitle"></div>
+        </template>
+      </v-list-item>
     </v-list>
   </v-container>
 </template>
