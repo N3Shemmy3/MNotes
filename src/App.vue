@@ -105,7 +105,7 @@ import NoteView from "./views/noteview/NoteView.vue";
 const theme = useTheme();
 
 var drawer = ref(null);
-const showNotesDialog = ref(false);
+const showNotesDialog = ref(true);
 
 let items = ref([
   {
