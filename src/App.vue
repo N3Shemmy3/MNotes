@@ -23,9 +23,10 @@
           v-for="(item, i) in items"
           :key="i"
           :value="item"
-          :active="i == 0"
+          :active="i == currentItem"
           active-color="primary"
           class="rounded-e-xl pl-3 mb-1"
+          @click="currentItem = i"
         >
           <template v-slot:prepend>
             <v-icon :icon="item.icon"></v-icon>
@@ -88,6 +89,7 @@
     />
   </v-app>
 </template>
+
 <style>
 .fab {
   position: fixed;
@@ -96,6 +98,7 @@
   right: 0px;
 }
 </style>
+
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useTheme } from "vuetify";
@@ -104,7 +107,8 @@ import NoteView from "./views/noteview/NoteView.vue";
 
 const theme = useTheme();
 
-var drawer = ref(null);
+const drawer = ref(null);
+const currentItem = ref(0);
 const showNotesDialog = ref(true);
 
 let items = ref([
