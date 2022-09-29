@@ -45,7 +45,7 @@
     <v-app-bar app elevation="2">
       <template v-slot:prepend>
         <v-app-bar-nav-icon
-          v-if="router.currentRoute.value.name == 'home'"
+          v-if="router.currentRoute.value.name == 'Home'"
           class="d-lg-none"
           @click="toggleDrawer()"
         />
@@ -136,7 +136,7 @@ function toggleTheme() {
 
 function goBack() {
   console.log(router.getRoutes.length);
-  router.back();
+  if (router.c) router.back();
 }
 
 function toggleDrawer() {
