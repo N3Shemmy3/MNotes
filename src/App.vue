@@ -135,8 +135,10 @@ function toggleTheme() {
 }
 
 function goBack() {
-  console.log(router.getRoutes.length);
-  if (router.c) router.back();
+  if (router.currentRoute.value.name == "Home") {
+    console.log(router.currentRoute.value.name);
+    router.back();
+  }
 }
 
 function toggleDrawer() {
