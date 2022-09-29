@@ -4,10 +4,12 @@
       <v-list nav>
         <v-list-item>
           <template v-slot:prepend>
-            <v-avatar
-              size="default"
-              icon="https://randomuser.me/api/portraits/women/85.jpg"
-            ></v-avatar>
+            <v-avatar size="default">
+              <v-img
+                alt="Avatar"
+                src="https://avatars.githubusercontent.com/u/67279072?v=4"
+              ></v-img>
+            </v-avatar>
           </template>
 
           <v-list-item-title class="text-subtitle-1">Shemmy3</v-list-item-title>

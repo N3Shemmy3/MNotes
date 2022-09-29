@@ -11,7 +11,7 @@
           :subtitle="item.subtitle"
         >
           <template v-slot:subtitle="{ subtitle }">
-            <div v-html="subtitle"></div>
+            <div v-html="subtitle" />
           </template>
         </v-list-item>
       </TransitionGroup>
