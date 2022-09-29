@@ -2,79 +2,46 @@
   <v-row justify="center">
     <v-dialog
       v-model="dialog"
-      fullscreen
-      :scrim="false"
+      :fullscreen="mobile"
+      :scrim="!mobile"
       transition="dialog-bottom-transition"
     >
       <template v-slot:activator="{ props }">
-        <v-btn color="primary" dark v-bind="props"> Open Dialog </v-btn>
+        <v-btn
+          id="CREATENOTE"
+          color="primary"
+          v-show="false"
+          dark
+          v-bind="props"
+        >
+          Open Dialog
+        </v-btn>
       </template>
       <v-card>
-        <v-toolbar dark color="primary">
+        <v-toolbar color="primary">
           <v-btn icon dark @click="dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>Settings</v-toolbar-title>
+          <v-toolbar-title>Create Note</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn dark text @click="dialog = false"> Save </v-btn>
           </v-toolbar-items>
         </v-toolbar>
-        <v-list lines="two" subheader>
-          <v-list-subheader>User Controls</v-list-subheader>
-          <v-list-item
-            title="Content filtering"
-            subtitle="Set the content filtering level to restrict apps that can be downloaded"
-          ></v-list-item>
-          <v-list-item
-            title="Password"
-            subtitle="Require password for purchase or use password to restrict purchase"
-          ></v-list-item>
-        </v-list>
-        <v-divider></v-divider>
-        <v-list lines="two" subheader>
-          <v-list-subheader>General</v-list-subheader>
-          <v-list-item
-            title="Notifications"
-            subtitle="Notify me about updates to apps or games that I downloaded"
-          >
-            <template v-slot:prepend>
-              <v-checkbox v-model="notifications"></v-checkbox>
-            </template>
-          </v-list-item>
-          <v-list-item
-            title="Sound"
-            subtitle="Auto-update apps at any time. Data charges may apply"
-          >
-            <template v-slot:prepend>
-              <v-checkbox v-model="sound"></v-checkbox>
-            </template>
-          </v-list-item>
-          <v-list-item
-            title="Auto-add widgets"
-            subtitle="Automatically add home screen widgets"
-          >
-            <template v-slot:prepend>
-              <v-checkbox v-model="widgets"></v-checkbox>
-            </template>
-          </v-list-item>
-        </v-list>
+        <v-container v-scroll fluid>
+          <v-text-field label="Note Title" type="text"></v-text-field>
+          <v-textarea class="mt-1" label="Note TextArea" auto-grow></v-textarea>
+        </v-container>
       </v-card>
     </v-dialog>
   </v-row>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+import { useDisplay } from "vuetify";
 
-// eslint-disable-next-line no-undef
-const props = defineProps<{
-  visibility: boolean;
-}>();
-
-const dialog = ref(true);
-const notifications = ref(false);
-const sound = ref(true);
-const widgets = ref(false);
+const { mobile } = useDisplay();
+const dialog = ref(false);
 </script>
 
 <style>

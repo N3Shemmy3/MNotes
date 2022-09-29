@@ -80,14 +80,14 @@
     </v-app-bar>
     <v-main>
       <router-view />
-      <NoteView :visibility="showNotesDialog"></NoteView>
+      <NoteView></NoteView>
     </v-main>
     <v-btn
       icon="mdi-pencil-outline"
       color="secondary"
       class="fab"
       size="large"
-      @click="showNotesDialog = !showNotesDialog"
+      @click="showNotesDialog()"
     />
   </v-app>
 </template>
@@ -111,7 +111,11 @@ const theme = useTheme();
 
 const drawer = ref(null);
 const currentItem = ref(0);
-const showNotesDialog = ref(true);
+
+function showNotesDialog() {
+  const button = document.getElementById("CREATENOTE");
+  button.click();
+}
 
 let items = ref([
   {
@@ -135,7 +139,7 @@ function toggleTheme() {
 }
 
 function goBack() {
-  if (router.currentRoute.value.name == "Home") {
+  if (router.currentRoute.value.name != "Home") {
     console.log(router.currentRoute.value.name);
     router.back();
   }
