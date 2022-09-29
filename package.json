@@ -1,5 +1,6 @@
 {
   "name": "mnotes",
+  "homepage" : "https://shemmy3.github.io/MNotes/",
   "version": "0.1.0",
   "private": true,
   "scripts": {
