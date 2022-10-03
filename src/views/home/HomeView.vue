@@ -3,12 +3,12 @@
     <v-list bg-color="background" lines="three">
       <TransitionGroup tag="ul" name="fade">
         <v-list-item
-          @click="$router.push('/about')"
-          v-for="item in items"
+          v-for="(item, index) in items"
           :key="item.title"
           :prepend-avatar="item.prependAvatar"
           :title="item.title"
           :subtitle="item.subtitle"
+          @click="onNoteItemClicked(index)"
         >
           <template v-slot:subtitle="{ subtitle }">
             <div v-html="subtitle" />
@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import router from "@/router";
 const items = [
   {
     prependAvatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
@@ -78,7 +79,11 @@ const items = [
       '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
   },
 ];
+function onNoteItemClicked(index: number) {
+  router.push({ name: "View", params: { id: index } });
+}
 </script>
+
 <style scoped>
 /* 1. declare transition */
 .fade-move,

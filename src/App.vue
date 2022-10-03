@@ -55,7 +55,7 @@
       </template>
 
       <v-toolbar-title>
-        MNotes
+        {{ toolbarTitle }}
         <!--
 
           <v-text-field
@@ -80,7 +80,6 @@
     </v-app-bar>
     <v-main>
       <router-view />
-      <NoteView></NoteView>
     </v-main>
     <v-btn
       icon="mdi-pencil-outline"
@@ -105,13 +104,12 @@
 import { onMounted, ref } from "vue";
 import { useTheme } from "vuetify";
 import router from "./router";
-import NoteView from "./views/noteview/NoteView.vue";
 
 const theme = useTheme();
 
 const drawer = ref(null);
 const currentItem = ref(0);
-
+const toolbarTitle = ref("MNotes");
 function showNotesDialog() {
   const button = document.getElementById("CREATENOTE");
   button.click();
@@ -149,8 +147,9 @@ function toggleDrawer() {
   drawer.value = !drawer.value;
 }
 router.afterEach((to, from, failure) => {
-  if (to.name == null) document.title = "MNotes";
-  else document.title = to.name.toString();
+  if (to.name == null) return;
+  document.title = to.name.toString();
+  toolbarTitle.value = to.name.toString();
 });
 onMounted(() => {
   console.log(this);
