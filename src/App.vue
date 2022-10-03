@@ -79,7 +79,11 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="slide-right">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </v-main>
     <v-btn
       icon="mdi-pencil-outline"
@@ -106,7 +110,6 @@ import { useTheme } from "vuetify";
 import router from "./router";
 
 const theme = useTheme();
-
 const drawer = ref(null);
 const currentItem = ref(0);
 const toolbarTitle = ref("MNotes");
