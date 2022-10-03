@@ -1,15 +1,22 @@
 <template>
   <v-container v-scroll fluid>
-    <v-text-field label="Note Title" type="text"></v-text-field>
-    <v-textarea class="mt-1" label="Note TextArea" auto-grow></v-textarea>
+    <v-text-field
+      v-model="noteTitle"
+      label="Note Title"
+      type="text"
+    ></v-text-field>
+    <v-textarea
+      v-model="noteText"
+      class="mt-1"
+      label="Note TextArea"
+      auto-grow
+    ></v-textarea>
   </v-container>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { useDisplay } from "vuetify";
-
-const { mobile } = useDisplay();
-const dialog = ref(false);
+const noteTitle = ref(""),
+  noteText = ref("");
 </script>
 
 <style>
