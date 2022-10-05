@@ -80,7 +80,7 @@
     </v-app-bar>
     <v-main>
       <router-view v-slot="{ Component }">
-        <transition name="slide-right">
+        <transition name="fade">
           <component :is="Component" />
         </transition>
       </router-view>
@@ -90,7 +90,6 @@
       color="secondary"
       class="fab"
       size="large"
-      @click="showNotesDialog()"
     />
   </v-app>
 </template>
@@ -113,10 +112,6 @@ const theme = useTheme();
 const drawer = ref(null);
 const currentItem = ref(0);
 const toolbarTitle = ref("MNotes");
-function showNotesDialog() {
-  const button = document.getElementById("CREATENOTE");
-  button.click();
-}
 
 let items = ref([
   {
@@ -149,7 +144,7 @@ function goBack() {
 function toggleDrawer() {
   drawer.value = !drawer.value;
 }
-router.afterEach((to, from, failure) => {
+router.afterEach((to) => {
   if (to.name == null) return;
   document.title = to.name.toString();
   toolbarTitle.value = to.name.toString();
