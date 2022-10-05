@@ -79,11 +79,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <router-view v-slot="{ Component }">
-        <transition name="fade">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <router-view />
     </v-main>
     <v-btn
       icon="mdi-pencil-outline"
@@ -135,10 +131,9 @@ function toggleTheme() {
 }
 
 function goBack() {
-  if (router.currentRoute.value.name != "Home") {
-    console.log(router.currentRoute.value.name);
-    router.back();
-  }
+  if (router.currentRoute.value.name != "Home") return;
+  console.log(router.currentRoute.value.name);
+  router.back();
 }
 
 function toggleDrawer() {

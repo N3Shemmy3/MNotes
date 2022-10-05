@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomePage from "../pages/home/HomePage.vue";
+import NotePage from "../pages/note/NotePage.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -9,8 +10,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/note/:id",
     name: "View",
-    meta: { transition: "slide-right" },
-    component: () => import("../pages/note/NotePage.vue"),
+    component: NotePage,
   },
 ];
 const router = createRouter({
