@@ -131,7 +131,7 @@ function toggleTheme() {
 }
 
 function goBack() {
-  if (router.currentRoute.value.name != "Home") return;
+  if (router.currentRoute.value.name == "Home") return;
   console.log(router.currentRoute.value.name);
   router.back();
 }
